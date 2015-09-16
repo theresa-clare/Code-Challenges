@@ -1,8 +1,12 @@
 class Node(object):
 	""" Singly linked list node representation """
+
 	def __init__(self, data=None, next=None):
 		self.data = data
 		self.next = next
+
+	def __repr__(self):
+		return "Node(%s)" % str(self.data)
 
 
 class LinkedList(object):
@@ -64,3 +68,25 @@ class LinkedList(object):
 			current = next
 
 		self.head = previous
+
+	def list_to_data(self):
+		data_list = []
+		current = self.head
+
+		while current != None:
+			data_list.append(current.data)
+			current = current.next
+
+		return data_list
+
+	def data_to_list(self, data_list):
+		self.head = Node(data_list[0])
+		current = self.head
+
+		for data in data_list[1:]:
+			current.next = Node(data)
+			current = current.next
+
+	def __repr__(self):
+		data_list = self.list_to_data()
+		return "LinkedList(%s)" % str(data_list)
