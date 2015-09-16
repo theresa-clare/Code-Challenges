@@ -52,3 +52,15 @@ class LinkedList(object):
 				current = current.next
 
 		raise ValueError("Data was not found in list")
+
+	def reverse(self):
+		previous = None
+		current = self.head
+
+		while current != None:
+			next = current.next
+			current.next = previous
+			previous = current
+			current = next
+
+		self.head = previous
