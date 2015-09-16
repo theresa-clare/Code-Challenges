@@ -26,6 +26,7 @@ def compute_permutations(string):
 		for i in range(len(perm)+1):
 			result.append(insert_char_at(perm, first_char, i))
 			# can append perm[:i] + first_char + perm[i:] instead of helper function if preferred
+			# if working with a list, change first_char to [first_char]
 
 	return result
 
