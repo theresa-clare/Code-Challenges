@@ -41,45 +41,59 @@ def longest_palindromic_substring(string):
 # Time: O(n^2)
 def dynamic_LPS(string):
 	"""
-	>>> longest_palindromic_substring("forgeeksskeegfor")
+	>>> dynamic_LPS("forgeeksskeegfor")
 	'geeksskeeg'
 
-	>>> longest_palindromic_substring("l")
+	>>> dynamic_LPS("l")
 	'l'
 
-	>>> longest_palindromic_substring("no palindrome")
+	>>> dynamic_LPS("no palindrome")
 	''
 	"""
 
-	max_length = 1
+	if len(string) == 1:
+		return string
 
-	start = 0
-
-	low = 0
-	high = 0
+	max_start = 0
+	max_end = 0
 
 	for i in range(1, len(string)):
-		low = i - 1
-		high = i
+		start = i - 1
+		end = i
 
-		while low >= 0 and high < len(string) and string[low] == string[high]:
-			if high-low+1 > max_length:
-				start = low
-				max_length = high - low + 1
-			low -= 1
-			high += 1
+		while start >= 0 and end < len(string):
+			if string[start] == string[end]:
+				start -= 1
+				end += 1
+			else:
+				start += 1
+				end -= 1
+				break
 
-		low = i-1
-		high = i + 1
+		if end - start > max_end - max_start:
+			max_start = start
+			max_end = end
 
-		while low >= 0 and high < len(string) and string[low] == string[high]:
-			if high-low+1 > max_length:
-				start = low
-				max_length = high - low + 1
-			low -= 1
-			high += 1
+		start = i-1
+		end = i
 
-	print string[low:high+1]
+		while start >= 0 and end < len(string):
+			if string[start] == string[end]:
+				start -= 1
+				end += 1
+			else:
+				start += 1
+				end -= 1
+				break
+
+		if end - start > max_end - max_start:
+			max_start = start
+			max_end = end
+
+	if max_end-max_start > 1:
+		return string[max_start:max_end+1]
+	else:
+		return ""
 
 #########################################################################################
 
