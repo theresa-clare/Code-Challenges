@@ -59,7 +59,7 @@ def dynamic_LPS(string):
 
 	for i in range(1, len(string)):
 		start = i - 1
-		end = i
+		end = i + 1
 
 		while start >= 0 and end < len(string):
 			if string[start] == string[end]:
@@ -90,7 +90,49 @@ def dynamic_LPS(string):
 			max_start = start
 			max_end = end
 
-	if max_end-max_start > 1:
+	if max_end-1-max_start > 1:
+		return string[max_start:max_end+1]
+	else:
+		return ""
+
+#########################################################################################
+
+# for substring without repetition	
+def nonrepetitive_dynamic_LPS(string):
+	"""
+	>>> nonrepetitive_dynamic_LPS("forgeeksskeegfor")
+	'geeksskeeg'
+
+	>>> nonrepetitive_dynamic_LPS("l")
+	'l'
+
+	>>> nonrepetitive_dynamic_LPS("no palindrome")
+	''
+	"""
+	if len(string) == 1:
+		return string
+
+	max_start = 0
+	max_end = 0
+
+	for i in range(1,len(string)):
+		for j in range(2):	
+			start = i-1
+			end = i+j
+			while start >= 0 and end < len(string):
+				if string[start] == string[end]:
+					start -= 1
+					end += 1
+				else:
+					start += 1
+					end -= 1
+					break
+
+			if end-start > max_end-max_start:
+				max_start = start
+				max_end = end
+
+	if max_end-1-max_start > 1:
 		return string[max_start:max_end+1]
 	else:
 		return ""
