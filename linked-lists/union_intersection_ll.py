@@ -12,6 +12,8 @@ Input:
 Output:
 	intersection:	4 -> 10
 	union:			2 -> 8 -> 20 -> 4 -> 15 -> 10
+
+http://www.geeksforgeeks.org/union-and-intersection-of-two-linked-lists/
 """
 
 from linkedlist import *
@@ -49,6 +51,11 @@ def union_intersection_ll(ll1, ll2):
 		current = current.next
 
 	return intersection, union
+
+# use merge sort on both linked lists, then traverse both lists for union & intersection
+def MS_union_intersection_ll(ll1, ll2):
+	# Will come back to complete this function
+	pass
 
 #########################################################################################
 
