@@ -43,6 +43,32 @@ def intersection_point(ll1, ll2):
 
 #########################################################################################
 
+def intersection_point_v2(ll1, ll2):
+	"""
+	Returns intersection point of linked lists using two loops
+
+	>>> ll3 = LinkedList()
+	>>> ll3.data_to_list([1, 2, 3, 4, 5])
+	>>> ll4 = LinkedList()
+	>>> ll4.data_to_list([10, 4, 20, 35])
+	>>> intersection_point_v2(ll3, ll4)
+	Node(4)
+	"""
+	current1 = ll1.head
+	current2 = ll2.head
+
+	while current1 != None:
+		while current2 != None:
+			if current1.data == current2.data:
+				return current1
+			current2 = current2.next
+		current2 = ll2.head
+		current1 = current1.next
+
+	return None
+
+#########################################################################################
+
 if __name__ == "__main__":
 	import doctest
 	doctest.testmod()
