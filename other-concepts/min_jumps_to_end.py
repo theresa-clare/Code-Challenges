@@ -74,3 +74,38 @@ def greedy_min_jumps_to_end(a, i=0, step_count=0):
 		return float('inf')
 	else:
 		return greedy_min_jumps_to_end(a, best_step, step_count+1)
+
+#########################################################################################
+
+# dynamic programming from GFG
+# build jumps array such that jumps[i] is the minimum number of jumps need to
+# reach arr[i] from arr[0]. return jumps[n-1]
+def min_num(x, y):
+	if x < y:
+		return x
+	return y
+
+def min_jumps(arr, n):
+	jumps = []*n
+	i = 0
+	j = 0
+
+	if n == 0 or arr[0] == 0:
+		return None
+
+	jumps[0] = 0
+
+	# find the minimum number of jumps to reach arr[i] from arr[0]
+	# and assign this value to jumps[i]
+	for i in range(1, n):
+		jumps[i] = float('inf')
+		for j in range(i):
+			if i <= j + arr[j] and jumps[j] != float('inf'):
+				jumps[i] = min_num(jumps[i], jumps[j] + 1)
+				break
+
+	return jumps[n-1]
+
+def min_jumps_wrapper(arr):
+	n = len(arr)
+	return min_jumps(arr, n)
