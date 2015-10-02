@@ -109,3 +109,47 @@ def min_jumps(arr, n):
 def min_jumps_wrapper(arr):
 	n = len(arr)
 	return min_jumps(arr, n)
+
+#########################################################################################
+
+# dynamic programming from GFG
+# build jumps array such that jumps[i] is the minimum number of jumps need to
+# reach arr[n-1] from arr[i]. return jumps[0]
+
+def min_jumps_v2(arr, n):
+	jumps = []*n
+	minimum = 0
+
+	# min number of jumps to reach last element from last element itself is always 0
+	jumps[n-1] = 0
+
+	i = n-2
+	j = 0
+
+	# start from second elemnt, move from right to left and construct jumps array
+	# where jumps[i] represents min number of jumps to reach arr[m-1] from arr[i]
+	while i >= 0:
+		# if arr[i] is 0 then arr[n-1] can't be reached from here
+		if arr[i] == 0:
+			jumps[i] = float('inf')
+		# if we can directly reach to the end point from here then jumps[i] is 1
+		elif arr[i] >= n - i - 1:
+			jumps[i] = 1
+		# otherwise, to find out min number of jumps needed to reach arr[n-1],
+		# check all the points reachable from here and jumps[] value for those points
+		else:
+			minimum = float('inf') # initialize min value
+			j = i+1
+			# check all reachable points and takes the minimum
+			while j < n and j <= arr[i] + i:
+				if minimum > jumps[j]:
+					minimum = jumps[j]
+				j += 1
+			# handles overflow
+			if minimum != float('inf'):
+				jumps[i] = minimum + 1
+			else:
+				jumps[i] = minimum
+		i -= 1
+
+	return jumps[0]
