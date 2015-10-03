@@ -9,22 +9,19 @@ http://www.geeksforgeeks.org/find-minimum-number-of-coins-that-make-a-change/
 
 Example:
 	Input: 		coins = [25, 10, 5], V = 30
-	Output:		3
+	Output:		2
 
 	Input:		coins = [9, 6, 5, 1], V = 11
 	Output:		2
 """
 
-def min_coins_for_change(coins, n, value):
-	if value == 0:
-		return 0
-
-	res = 0
-
+def min_coins_for_change(coins, value, total_count=0):
 	for coin in coins:
-		if coin <= value:
-			sub_res = min_coins_for_change(coins, n, value-coin)
-			if sub_res + 1 < res:
-				res = sub_res + 1
+		coin_count = value/coin
+		total_count += coin_count
+		value -= coin*coin_count
+		print "coin", coin
+		print "coin count", coin_count
+		print "new value", value
 
-	return res
+	return total_count
