@@ -15,6 +15,7 @@ Example:
 	Output:		2
 """
 
+# iterative soltuion; does not cover all cases
 def min_coins_for_change(coins, value, total_count=0):
 	for coin in coins:
 		coin_count = value/coin
@@ -25,3 +26,18 @@ def min_coins_for_change(coins, value, total_count=0):
 		print "new value", value
 
 	return total_count
+
+# recursive solution that covers all cases
+def min_coins_for_change_v2(coins, value):
+	if value == 0:
+		return 0
+
+	res = float('inf')
+
+	for coin in coins:
+		if coin <= value:
+			coin_result = min_coins_for_change_v2(coins, value-coin)
+			if coin_result + 1 < res:
+				res = coin_result + 1
+
+	return res
