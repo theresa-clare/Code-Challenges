@@ -8,13 +8,13 @@ http://www.geeksforgeeks.org/kth-largest-element-in-bst-when-modification-to-bst
 """
 
 def kth_largest_in_BST(root, k, count=0):
-	if root is None or c >= k:
+	if root is None or count >= k:
 		return
 
-	kth_largest_in_BST(root.right, k, c)
+	kth_largest_in_BST(root.right, k, count)
 	
 	count += 1
-	if c == k:
+	if count == k:
 		print "%s'th largest element is %s" % k, str(root.data)
 
-	kth_largest_in_BST(root.left, k, c)
+	kth_largest_in_BST(root.left, k, count)
