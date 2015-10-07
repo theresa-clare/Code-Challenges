@@ -73,6 +73,24 @@ def match_tokenized_regex_pattern(pattern, string):
 	# non-matching single letters
 	else:
 		return False
+
+#########################################################################################
+
+def is_char_match(char, pattern_char):
+	return char == pattern_char or pattern_char == '.'
+
+def is_match(string, pattern):
+	if pattern is None or pattern = '':
+		return not bool(subject)
+
+	if len(pattern) > 1 and pattern[1] == '*':
+		# return 0 occurrences or (1 occurrence and more occurences)
+		return is_match(subject, pattern[2:]) or \
+		(is_char_match(subject[0], pattern[0]) and \
+		is_match(subject[1:], pattern))
+	else: # non-star case
+		return is_char_match(subject[0], pattern[0]) and is_match(subject[1:], pattern[1:])
+
 #########################################################################################
 
 if __name__ == '__main__':
