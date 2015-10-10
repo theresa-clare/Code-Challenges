@@ -1,3 +1,5 @@
+# Time: O(n)
+# Space: O(n)
 def binary_add(num1, num2):
 	"""
 	Given two binary numbers as strings, returns the sum of binary numbers as a string.
