@@ -17,9 +17,11 @@ def subtract(a, b):
 	"""
 	return a + -b
 
+#########################################################################################
+
 def multiply(a, b):
 	"""
-	Given two numbers, returns the product using oly the add operator
+	Given two numbers, returns the product using only the add operator
 
 	>>> multiply(-1, 2)
 	-2
