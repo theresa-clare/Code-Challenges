@@ -17,6 +17,32 @@ def subtract(a, b):
 	"""
 	return a + -b
 
+def multiply(a, b):
+	"""
+	Given two numbers, returns the product using oly the add operator
+
+	>>> multiply(-1, 2)
+	-2
+
+	>>> multiply(5, 3)
+	15
+
+	>>> multiply(5, 0)
+	0
+	"""
+	if a < b:
+		return multiply(b, a)
+
+	product = 0
+
+	for i in range(abs(b)):
+		product += a
+
+	if b < 0:
+		product = -product
+
+	return product
+
 #########################################################################################
 
 if __name__ == '__main__':
