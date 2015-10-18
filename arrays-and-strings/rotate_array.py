@@ -3,7 +3,8 @@ Rotate an array left by d elements
 
 http://www.geeksforgeeks.org/array-rotation/
 """
-
+# Time: O(1)
+# Space: O(n)
 def rotate_array(num_list, d):
 	"""
 	Given a list, rotate the list by d elements
@@ -26,6 +27,8 @@ def rotate_array(num_list, d):
 
 #########################################################################################
 
+# Time: O(n^2)
+# Space: O(1)
 def rotate_array_v2(num_list, d):
 	"""
 	Given a list, rotates the list left by d elements.
