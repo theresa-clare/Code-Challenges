@@ -1,3 +1,5 @@
+# Time: O(n * n log n)
+# Space: O(n)
 def anagram_buckets(words):
 	"""
 	Given an array of words, print all anagrams together
