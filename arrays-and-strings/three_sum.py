@@ -2,6 +2,8 @@
 Given an array of integers and a target sum, find the indices where a[i] + a[j] + a[z] = k
 """
 
+# Time: O(n^2)
+# Space: O(n)
 def three_sum(int_array, k):
 	"""
 	Returns a tuple with the indices where a[i] + a[j] + a[z] = k given an array of
