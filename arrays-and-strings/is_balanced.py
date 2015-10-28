@@ -23,6 +23,8 @@ def is_parens(char):
 		return True
 	return False
 
+# Time: O(n)
+# Space: O(n)
 def is_balanced(parens):
 	"""
 	Given an expression, returns True if the parentheses are balanced
