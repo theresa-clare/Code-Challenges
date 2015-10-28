@@ -1,3 +1,5 @@
+# Time: O(n)
+# Space: O(n)
 def balance_parens(parens):
 	"""
 	Given a string of parentheses, return the string balanced
