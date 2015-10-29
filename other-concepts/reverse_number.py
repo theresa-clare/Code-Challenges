@@ -1,3 +1,27 @@
+def naive_reverse_number(num):
+	""" 
+	Given a number, return the number reversed
+
+	>>> naive_reverse_number(1234)
+	4321
+
+	>>> naive_reverse_number(0)
+	0
+
+	>>> naive_reverse_number(-1234)
+	-4321
+	"""
+	num_list = list(str(num))
+
+	for i in range(len(num_list) / 2):
+		num_list[i], num_list[-i - 1] = num_list[-i - 1], num_list[i]
+
+	if num < 0:
+		return int("-" + "".join(num_list[:-1]))
+	else:
+		return int("".join(num_list))
+
+
 # Time: O(n)
 # Space: O(n)
 def reverse_number(num):
