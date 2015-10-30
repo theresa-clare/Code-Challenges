@@ -4,6 +4,8 @@ and the orders are correct in the expression. Return True if in right order;
 return False otherwise
 """
 
+# Time: O(1)
+# Space: O(1)
 def is_parens(char):
 	"""
 	Returns True if character is a type of parentheses; returns False otherwise
@@ -17,7 +19,7 @@ def is_parens(char):
 	>>> is_parens("char")
 	False
 	"""
-	parens = {"(", ")", "[", "]", "{", "}"}
+	parens = {"(", ")", "[", "]", "{", "}"} # can make global variable instead
 
 	if char in parens:
 		return True
